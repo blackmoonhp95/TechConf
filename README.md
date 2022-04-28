@@ -61,11 +61,22 @@ You will need to install the following locally:
 ## Monthly Cost Analysis
 Complete a month cost analysis of each Azure resource to give an estimate total cost using the table below:
 
+Region: West Europe
+
 | Azure Resource | Service Tier | Monthly Cost |
 | ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |     |              |
-| *Azure Service Bus*   |         |              |
-| ...                   |         |              |
+| *Azure Postgres Database* |  Basic   |   ~$26/month           |
+| *Azure Service Bus*   |   Basic      |   $0.05/Million/Month           |
+| *App service plan*   |   Basic      |    $54.75/month          |
+| *Azure Storage*   |  Standard / General Purpose V2       |    $20.73/month          |
+| *Sendgrid*   |    Essentials     |    $14.95/month         |
+| *Azure function*   |   Consumption      |    $17.60/month          |
 
 ## Architecture Explanation
 This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+
+> The current architecture is more cost-effective because now When the admin sends out notifications, the app won't take a long time because it won't loop through all attendees, resulting in some HTTP timeout exceptions anymore.
+
+> Using Azure Web App allows scalability to handle user load at peak
+
+> Also, The current architecture is more cost-effective, because it uses on demand services like Azure App Services
