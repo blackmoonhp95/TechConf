@@ -21,8 +21,11 @@ def main(msg: func.ServiceBusMessage):
     try:
         pass
         with connect.cursor() as cur:
-            noti_table = cur.execute("SELECT message, subject FROM notification WHERE id = {}".format(notification_id))
-            att_table = cur.execute("SELECT first_name, email FROM attendee")
+            cur.execute("SELECT message, subject FROM notification WHERE id = {}".format(notification_id))
+            notifications = cur.fetchall()
+            cur.execute("SELECT first_name, email FROM attendee")
+            attendees = cur.fetchall()
+            
             
             print(len(noti_table), type(noti_table))
             
