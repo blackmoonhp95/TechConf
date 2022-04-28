@@ -3,6 +3,7 @@
   "Values": {
     "AzureWebJobsStorage": "",
     "FUNCTIONS_WORKER_RUNTIME": "python",
-    "techconfnamespace_SERVICEBUS": "Endpoint=sb://techconf-namespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YD/j35ry932hGKdjTNBvf8jGUe39w1JyxnmA7eTiFHs="
+    "techconfnamespace_SERVICEBUS": "Endpoint=sb://techconf-namespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YD/j35ry932hGKdjTNBvf8jGUe39w1JyxnmA7eTiFHs=",
+    "SENDGRID_API_KEY": "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"
   }
 }
