@@ -6,6 +6,7 @@ from datetime import datetime
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
+
 def main(msg: func.ServiceBusMessage):
 
     notification_id = int(msg.get_body().decode('utf-8'))
@@ -27,9 +28,16 @@ def main(msg: func.ServiceBusMessage):
             attendees = cur.fetchall()
             
             
-            print(len(noti_table), type(noti_table))
-            
-            
+            logging.info(type(notifications))
+            logging.info(notifications)
+            logging.info(attendees)
+        
+        for attendee in attendees:
+            pass
+        
+        with connect.cursor() as cur:
+            cur.execute("UPDATE notification SET status = 'Notified {} attendees' WHERE id = {}".format(len(attendees)
+                                                                                                        , notification_id))
         # TODO: Get notification message and subject from database using the notification_id
 
         # TODO: Get attendees email and name
