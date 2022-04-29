@@ -66,16 +66,25 @@ Region: West Europe
 | Azure Resource | Service Tier | Monthly Cost |
 | ------------ | ------------ | ------------ |
 | *Azure Postgres Database* |  Basic   |   ~$26/month           |
+| *Azure Postgres Database* |  Compute Gen 5   |   ~$66.1672/month           |
 | *Azure Service Bus*   |   Basic      |   $0.05/Million/Month           |
+| *Azure Service Bus*   |   Standard      |   $0.80/Million/Month           |
 | *App service plan*   |   Basic      |    $54.75/month          |
+| *App service plan*   |   Premium      |    $146/month          |
 | *Azure Storage*   |  Standard / General Purpose V2       |    $20.73/month          |
 | *Sendgrid*   |    Essentials     |    $14.95/month         |
+| *Sendgrid*   |    Essentials     |    $89.95/month         |
 | *Azure function*   |   Consumption      |    $17.60/month          |
+| *Azure function*   |   Premium      |    $126.29/month          |`
 
 ## Architecture Explanation
 This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
 
-> The current architecture is more cost-effective because now When the admin sends out notifications, the app won't take a long time because it won't loop through all attendees, resulting in some HTTP timeout exceptions anymore.
+> The current architecture is more cost-effective because now When the admin sends out notifications, the app won't take a long time because it won't loop through all attendees, resulting in some HTTP timeout exceptions anymore. To resolve this problem, we need to create more senders in sendgrid. For each attendee, we will use a sender to send email.
+
+> Furthermore, we could also use Azure Queue to get the notification's id. Azure Queue Storage is a service for storing large numbers of messages. A queue may contain millions of messages, up to the total capacity limit of a storage account. Queues are commonly used to create a backlog of work to process asynchronously.
+
+> Azure Functions is a cloud service available on-demand that provides all the continually updated infrastructure and resources needed to run your applications. Azure Functions supports an output binding for SendGrid by adding Azure Queue as a input trigger.
 
 > Using Azure Web App allows scalability to handle user load at peak
 
